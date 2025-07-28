@@ -1,1 +1,133 @@
 
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bingo Interactivo</title>
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+
+<div id="pantallaNombre" class="centered-layer fade-in">
+  <div class="card">
+    <h1 class="titulo-card">Ingreso Nuevo Bingo</h1>
+<div class="input-column">
+    <span class="titulo-input">Nombre Organizador</span>
+    <input type="text" id="nombreOrganizador" placeholder="Ej: Colegio Los Andes" />
+    </div>
+<div class="input-column">
+    <span class="titulo-input">Sube tu logo</span>
+    <input type="file" id="logoOrganizador" accept="image/*" />
+</div>
+     <button onclick="pasarAPantallaPremios()">Continuar</button>
+  </div>
+</div>
+
+<div id="pantallaPremios" class="centered-layer fade-out">
+  <div class="card">
+<div class="input-column">
+
+    </div>
+    <button onclick="volverAPantallaNombre()" style="float:left">← Volver</button>
+    <h2 class="titulo-card">Ingreso Nuevo Bingo</h2>
+    <div class="input-column">
+  <span class="titulo-input">Cantidad de entradas</span>
+  <input type="number" id="cantEntradas" min="1" value="100" />
+</div>
+<div class="input-column">
+  <span class="titulo-input">Cantidad de premios</span>
+  <div class="stepper">
+    <button onclick="ajustarCantidad(-1)">–</button>
+    <input type="number" id="cantBingos" min="1" max="20" value="1" onchange="generarBoxesPremios()" />
+    <button onclick="ajustarCantidad(1)">+</button>
+  </div>
+</div>
+
+
+    <div class="grid-premios" id="contenedorPremios"></div>
+    <button onclick="iniciarBingo()">Iniciar Bingo</button>
+  </div>
+</div>
+
+<div id="modalPremio" class="modal" onclick="cerrarModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="close" onclick="cerrarModal(event)">×</button>
+    <h3 id="tituloModal">Premio</h3>
+    <span class="titulo-input">Ingresa el Premio Principal</span>
+    <input type="text" id="inputMayor" placeholder="Premio mayor" />
+    <span class="titulo-input">Ingresa el Binguito</span>
+    <input type="text" id="inputBinguito" placeholder="Binguito" />
+    <button onclick="guardarPremio()">Guardar</button>
+  </div>
+</div>
+
+<div class="tablero" id="pantallaTablero">
+  <div class="header">
+    <div class="datos input-column">
+    <img id="logoFinal" />
+    <h1 id="nombreFinal">Bingo</h1>
+    </div>
+  <div class="select-bingo">
+    <select id="selectorBingo" onchange="mostrarPremioSeleccionado()"></select>
+    <div id="premioActual" ></div>
+  </div>
+  </div>
+
+  <div class="status-panel">
+
+    <div class="timer number-box" id="timer">Tiempo transcurrido: 00:00</div>
+    <div class="Binguito number-box" id="binguito">Forma X</div>
+<div class="Binguito number-box" onclick="abrirModalEntrada()">Sorteo Entrada</div>
+
+    <div class="number-status">
+  <div class="circle-box">
+    <div class="circle" id="currentNumber">–</div>
+    <div class="circle-label">Número actual</div>
+  </div>
+  <div class="circle-box">
+    <div class="circle" id="previousNumber">–</div>
+    <div class="circle-label">Número anterior</div>
+  </div>
+</div>
+
+  </div>
+ 
+  <div class="bingo-grid" id="bingoGrid"></div>
+</div>
+
+<div id="modalError" class="modal" onclick="cerrarModalError(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="close" onclick="cerrarModalError(event)">×</button>
+    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Faltan datos</h3>
+    <p style="font-size: 1.2rem;">Por favor completa todos los premios y binguitos antes de iniciar el bingo.</p>
+    <button onclick="cerrarModalError(event)" style="margin-top: 2rem;">Entendido</button>
+  </div>
+</div>
+
+<div id="modalSorteoEntrada" class="modal" onclick="cerrarModalEntrada(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="close" onclick="cerrarModalEntrada(event)">×</button>
+    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Sorteo de Entrada</h3>
+    <p style="font-size: 1.2rem;">Participan del 1 al <span id="rangoEntradas">100</span></p>
+    <button onclick="sortearEntrada()" class="cerrar-error">Sortear número</button>
+<div class="sorteo-horizontal">
+  <div class="marcador"></div>
+  <div class="cinta-wrapper">
+    <div id="cintaNumeros" class="cinta-numeros"></div>
+  </div>
+</div>
+  </div>
+</div>
+
+<script src="js/inicio.js"></script>
+<script src="js/bingo.js"></script>
+<script src="js/sorteoEntrada.js"></script>
+
+
+</body>
+</html>
+
