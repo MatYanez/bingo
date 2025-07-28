@@ -3,6 +3,16 @@ let premios = [];
 let nombreOrg = "";
 let logoURL = "";
 
+function iniciarBingo() {
+  const incompletos = premios.some(p => !p.mayor.trim() || !p.binguito.trim());
+  if (incompletos) {
+    abrirModalError();
+    return;
+  }
+
+  guardarBingoEnFirestore(); // ← Aquí lo guardamos
+
+
 function pasarAPantallaPremios() {
   nombreOrg = document.getElementById("nombreOrganizador").value.trim();
   const logo = document.getElementById("logoOrganizador").files[0];
@@ -102,3 +112,6 @@ function guardarBingoEnFirestore() {
       console.error("Error al guardar el bingo:", error);
     });
 }
+
+
+//v1
