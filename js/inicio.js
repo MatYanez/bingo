@@ -82,3 +82,23 @@ function cerrarModalError(event) {
     document.getElementById("modalError").classList.remove("active");
   }
 }
+
+function guardarBingoEnFirestore() {
+  const datosBingo = {
+    nombre: nombreOrg,
+    logoURL: logoURL || "",
+    premios: premios,
+    jugadores: [], // Se puede llenar después
+    creado: new Date()
+  };
+
+  db.collection("bingos").add(datosBingo)
+    .then(docRef => {
+      console.log("Bingo creado con ID:", docRef.id);
+      // Guarda el ID para usarlo después si es necesario
+      window.bingoId = docRef.id;
+    })
+    .catch(error => {
+      console.error("Error al guardar el bingo:", error);
+    });
+}
