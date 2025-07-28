@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenido al Bingo</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .pantalla-inicio {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .pantalla-inicio h1 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .boton-bingo {
+      background-color: #00c853;
+      color: black;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      cursor: pointer;
+      width: 90%;
+      max-width: 300px;
+      transition: transform 0.2s ease;
+    }
+
+    .boton-bingo:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 500px) {
+      .pantalla-inicio h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pantalla-inicio fade-in">
+    <h1>🎉 ¡Bienvenido al Bingo!</h1>
+    <button class="boton-bingo" onclick="window.location.href='crear.html'">Crear Bingo</button>
+    <button class="boton-bingo" onclick="window.location.href='salas.html'">Unirse a un Bingo</button>
+  </div>
+
+</body>
+</html>
