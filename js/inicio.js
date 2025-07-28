@@ -10,7 +10,7 @@ function iniciarBingo() {
     return;
   }
 
-  guardarBingoEnFirestore(); // ← Aquí lo guardamos
+  guardarBingoEnFirestore(); 
 
 
 function pasarAPantallaPremios() {
@@ -114,4 +114,3 @@ function guardarBingoEnFirestore() {
 }
 
 
-//v1
