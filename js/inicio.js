@@ -11,7 +11,7 @@ function iniciarBingo() {
   }
 
   guardarBingoEnFirestore(); 
-
+}
 
 function pasarAPantallaPremios() {
   nombreOrg = document.getElementById("nombreOrganizador").value.trim();
@@ -114,3 +114,4 @@ function guardarBingoEnFirestore() {
 }
 
 
+//v2
